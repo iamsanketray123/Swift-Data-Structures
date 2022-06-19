@@ -1,5 +1,3 @@
-import Foundation
-
 struct MinHeap {
   var items: [Int] = []
 
@@ -42,16 +40,20 @@ struct MinHeap {
       items[indexOne] = items[indexTwo]
       items[indexTwo] = placeholder
   }
+    
+  public var isEmpty: Bool {
+      return items.isEmpty
+  }
 
-  public func peek() -> Int {
+  public func peek() -> Int? {
       if items.count != 0 {
           return items[0]
       } else {
-          fatalError()
+          return nil
       }
   }
 
-  mutating public func poll() -> Int {
+  mutating public func poll() -> Int? {
       if items.count != 0 {
           let item = items[0]
           items[0] = items[items.count - 1]
@@ -59,7 +61,7 @@ struct MinHeap {
           items.removeLast()
           return item
       } else {
-          fatalError()
+          return nil
       }
   }
 
