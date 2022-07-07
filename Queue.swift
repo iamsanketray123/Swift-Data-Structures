@@ -1,12 +1,7 @@
-class Node<T>: CustomStringConvertible {
+class Node<T> {
     
     var value: T
     var next: Node?
-    
-    var description: String {
-        guard let next = next else { return "\(value)" }
-        return "\(value) -> " + String(describing: next)
-    }
     
     init(value: T, next: Node? = nil) {
         self.value = value
@@ -14,7 +9,7 @@ class Node<T>: CustomStringConvertible {
     }
 }
 
-struct Queue<T>: CustomStringConvertible {
+struct Queue<T> {
     
     var front: Node<T>?
     
@@ -24,11 +19,6 @@ struct Queue<T>: CustomStringConvertible {
     
     var isEmpty: Bool {
         return front == nil
-    }
-    
-    var description: String {
-        guard let front = front else { return "Empty Queue" }
-        return String(describing: front)
     }
     
     var peek: T? {
