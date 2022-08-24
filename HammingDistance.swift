@@ -4,7 +4,7 @@
         
         while xor != 0 {
             distance += 1
-            xor = xor & (xor-1)
+            xor &= (xor-1)
         }
         
         return distance
