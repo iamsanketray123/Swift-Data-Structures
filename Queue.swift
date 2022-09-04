@@ -76,7 +76,7 @@ class Queue<T> {
   var count:Int = 0
 
   // MARK: - Helper Methods  
-  func dequeue () -> Node<T>? {
+  func dequeue() -> Node<T>? {
     if let node = head {
       head = head?.next
       count -= 1
