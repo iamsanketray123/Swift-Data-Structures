@@ -85,7 +85,7 @@ class Queue<T> {
     return nil
   }
     
-  func enqueue(value:T) {
+  func enqueue(_ value:T) {
     let newNode = Node(value:value)
     if let tailNode = tail {
       tailNode.next = newNode
