@@ -74,6 +74,9 @@ class Queue<T> {
   var tail:Node<T>?
   var head:Node<T>?
   var count:Int = 0
+  var isEmpty: Bool {
+      return count == 0
+  }
 
   // MARK: - Helper Methods  
   func dequeue() -> Node<T>? {
