@@ -43,6 +43,9 @@ class Deque {
         let value = head.value
         self.head = head.next
         head.next?.prev = nil
+        if head.next == nil { // If there's no next node, tail should be nil
+            tail = nil
+        }
         return value
     }
 
@@ -51,35 +54,17 @@ class Deque {
         let value = tail.value
         self.tail = tail.prev
         tail.prev?.next = nil
+        if tail.prev == nil { // If there's no previous node, head should be nil
+            head = nil
+        }
         return value
     }
+
+    func peekFront() -> Int? {
+        return head?.value
+    }
+
+    func peekBack() -> Int? {
+        return tail?.value
+    }
 }
-
-
-/*
-
-let deque = Deque()
-
-// Adding elements to front
-deque.pushFront(1)
-deque.pushFront(2)
-deque.pushFront(3)
-
-// Adding elements to back
-deque.pushBack(4)
-deque.pushBack(5)
-
-// Removing elements from front
-print(deque.popFront()!) // 3
-print(deque.popFront()!) // 2
-
-// Removing elements from back
-print(deque.popBack()!) // 5
-print(deque.popBack()!) // 4
-
-// Checking if deque is empty
-print(deque.isEmpty()) // false
-print(deque.popFront()!) // 1
-print(deque.isEmpty()) // true
-
-*/
