@@ -59,18 +59,21 @@ struct Heap<T: Comparable> {
         while true {
             let leftChildIndex = 2 * parentIndex + 1
             let rightChildIndex = 2 * parentIndex + 2
-            var optionalSwapIndex: Int?
+            var swapIndex = parentIndex
 
-            if leftChildIndex < elements.count && sort(elements[leftChildIndex], elements[parentIndex]) {
-                optionalSwapIndex = leftChildIndex
+            // Compare with left child
+            if leftChildIndex < elements.count && sort(elements[leftChildIndex], elements[swapIndex]) {
+                swapIndex = leftChildIndex
             }
 
-            if rightChildIndex < elements.count,
-               let swapIndex = optionalSwapIndex, sort(elements[rightChildIndex], elements[swapIndex]) {
-                optionalSwapIndex = rightChildIndex
+            // Compare with right child
+            if rightChildIndex < elements.count && sort(elements[rightChildIndex], elements[swapIndex]) {
+                swapIndex = rightChildIndex
             }
 
-            guard let swapIndex = optionalSwapIndex else { return }
+            // If no swaps needed, break out
+            if swapIndex == parentIndex { return }
+
             elements.swapAt(parentIndex, swapIndex)
             parentIndex = swapIndex
         }
