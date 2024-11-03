@@ -12,13 +12,13 @@ class Node<T> {
 struct Queue<T> {
     
     var front: Node<T>?
-    
     var rear: Node<T>?
+    private(set) var count: Int = 0 // Track the count of elements in the queue
     
     init() { }
     
     var isEmpty: Bool {
-        return front == nil
+        return count == 0
     }
     
     var peek: T? {
@@ -33,6 +33,7 @@ extension Queue {
         if rear == nil {
             rear = front
         }
+        count += 1
     }
     
     mutating func enqueue(_ value: T) {
@@ -43,15 +44,19 @@ extension Queue {
         
         rear?.next = Node(value: value)
         rear = rear?.next
+        count += 1
     }
     
     mutating func dequeue() -> T? {
+        guard let value = front?.value else { return nil }
+        
         defer {
             front = front?.next
             if isEmpty {
                 rear = nil
             }
+            count -= 1
         }
-        return front?.value
+        return value
     }
 }
