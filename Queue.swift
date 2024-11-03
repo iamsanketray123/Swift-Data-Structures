@@ -49,14 +49,14 @@ extension Queue {
     
     mutating func dequeue() -> T? {
         guard let value = front?.value else { return nil }
-        
-        defer {
-            front = front?.next
-            if isEmpty {
-                rear = nil
-            }
-            count -= 1
+
+        front = front?.next
+        count -= 1
+
+        if isEmpty {
+            rear = nil
         }
+
         return value
     }
 }
