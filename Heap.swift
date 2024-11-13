@@ -78,4 +78,20 @@ struct Heap<T: Comparable> {
             parentIndex = swapIndex
         }
     }
+
+    func printHeap() {
+        var tempHeap = self
+        var sortedElements: [T] = []
+        
+        // Remove all elements one by one and store them
+        while let element = tempHeap.remove() {
+            sortedElements.append(element)
+        }
+        
+        // Print elements
+        print("Heap elements in \(sort(sortedElements[0], sortedElements[0]) ? "ascending" : "descending") order:")
+        for element in sortedElements {
+            print(element)
+        }
+    }
 }
