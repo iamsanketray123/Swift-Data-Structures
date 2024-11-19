@@ -1,23 +1,23 @@
-class Node {
-    var value: Int
+class Node<T> {
+    var value: T
     var next: Node?
     var prev: Node?
 
-    init(_ value: Int) {
+    init(_ value: T) {
         self.value = value
     }
 }
 
-class Deque {
+class Deque<T> {
     private(set) var count: Int = 0 // Tracks the number of elements
-    var head: Node?
-    var tail: Node?
+    var head: Node<T>?
+    var tail: Node<T>?
 
     func isEmpty() -> Bool {
         return count == 0
     }
 
-    func pushFront(_ value: Int) {
+    func pushFront(_ value: T) {
         let newNode = Node(value)
         if let head = head {
             newNode.next = head
@@ -29,7 +29,7 @@ class Deque {
         count += 1
     }
 
-    func pushBack(_ value: Int) {
+    func pushBack(_ value: T) {
         let newNode = Node(value)
         if let tail = tail {
             newNode.prev = tail
@@ -41,7 +41,7 @@ class Deque {
         count += 1
     }
 
-    func popFront() -> Int? {
+    func popFront() -> T? {
         guard let head = head else { return nil }
         let value = head.value
         self.head = head.next
@@ -53,7 +53,7 @@ class Deque {
         return value
     }
 
-    func popBack() -> Int? {
+    func popBack() -> T? {
         guard let tail = tail else { return nil }
         let value = tail.value
         self.tail = tail.prev
@@ -65,11 +65,11 @@ class Deque {
         return value
     }
 
-    func peekFront() -> Int? {
+    func peekFront() -> T? {
         return head?.value
     }
 
-    func peekBack() -> Int? {
+    func peekBack() -> T? {
         return tail?.value
     }
 }
