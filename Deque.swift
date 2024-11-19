@@ -9,11 +9,12 @@ class Node {
 }
 
 class Deque {
+    private(set) var count: Int = 0 // Tracks the number of elements
     var head: Node?
     var tail: Node?
 
     func isEmpty() -> Bool {
-        return head == nil
+        return count == 0
     }
 
     func pushFront(_ value: Int) {
@@ -25,6 +26,7 @@ class Deque {
             tail = newNode
         }
         head = newNode
+        count += 1
     }
 
     func pushBack(_ value: Int) {
@@ -36,6 +38,7 @@ class Deque {
             head = newNode
         }
         tail = newNode
+        count += 1
     }
 
     func popFront() -> Int? {
@@ -46,6 +49,7 @@ class Deque {
         if head.next == nil { // If there's no next node, tail should be nil
             tail = nil
         }
+        count -= 1
         return value
     }
 
@@ -57,6 +61,7 @@ class Deque {
         if tail.prev == nil { // If there's no previous node, head should be nil
             head = nil
         }
+        count -= 1
         return value
     }
 
