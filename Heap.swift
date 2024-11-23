@@ -52,24 +52,33 @@ struct Heap<T> {
         elements[childIndex] = child
     }
     
-    private mutating func heapifyDown(from index: Int) {
+        private mutating func heapifyDown(from index: Int) {
         var parentIndex = index
         while true {
             let leftChildIndex = 2 * parentIndex + 1
             let rightChildIndex = 2 * parentIndex + 2
-            var swapIndex = parentIndex
-            // Compare with left child
-            if leftChildIndex < elements.count && sort(elements[leftChildIndex], elements[swapIndex]) {
-                swapIndex = leftChildIndex
+            var candidateIndex = parentIndex
+            
+            // First, find the "better" child
+            if leftChildIndex < elements.count {
+                if sort(elements[leftChildIndex], elements[candidateIndex]) {
+                    candidateIndex = leftChildIndex
+                }
             }
-            // Compare with right child
-            if rightChildIndex < elements.count && sort(elements[rightChildIndex], elements[swapIndex]) {
-                swapIndex = rightChildIndex
+            
+            if rightChildIndex < elements.count {
+                // Compare right child with the better of parent and left child
+                if sort(elements[rightChildIndex], elements[candidateIndex]) {
+                    candidateIndex = rightChildIndex
+                }
             }
-            // If no swaps needed, break out
-            if swapIndex == parentIndex { return }
-            elements.swapAt(parentIndex, swapIndex)
-            parentIndex = swapIndex
+            
+            if candidateIndex == parentIndex {
+                return  // Heap property is satisfied
+            }
+            
+            elements.swapAt(parentIndex, candidateIndex)
+            parentIndex = candidateIndex
         }
     }
     
