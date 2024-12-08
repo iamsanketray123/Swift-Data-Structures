@@ -1,11 +1,9 @@
 class UnionFind {
     
-    
     // MARK: - Variables
     var parent: [Int]
     var rank: [Int]
     var count: Int
-    
     
     // MARK: - Initialisation Method
     init(_ count: Int) {
@@ -13,7 +11,6 @@ class UnionFind {
         rank = Array(repeating: 1, count: count)
         self.count = count
     }
-    
     
     // MARK: - Helper Methods
     func findParent(_ node: Int) -> Int {
