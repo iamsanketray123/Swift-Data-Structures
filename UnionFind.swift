@@ -42,7 +42,7 @@ class UnionFind {
             parent[parent1] = parent2
         } else {
             parent[parent1] = parent2
-            rank[node2] += 1
+            rank[parent2] += 1
         }
         
         // Reduce count by 1 when we merge two components
