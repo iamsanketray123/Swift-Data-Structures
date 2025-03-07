@@ -1,6 +1,6 @@
 final class UnionFind {
-    var rank: [Int]
-    var parent: [Int]
+    private var rank: [Int]
+    private var parent: [Int]
     var count: Int
 
     init(_ count: Int) {
