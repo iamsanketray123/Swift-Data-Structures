@@ -60,3 +60,17 @@ extension Queue {
         return value
     }
 }
+
+extension Queue {
+    func printQueue() {
+        var current = front
+        var result: [T] = []
+        
+        while current != nil {
+            result.append(current!.value)
+            current = current?.next
+        }
+        
+        print(result.map { "\($0)" }.joined(separator: " -> "))
+    }
+}
