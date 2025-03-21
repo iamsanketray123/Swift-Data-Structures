@@ -24,10 +24,7 @@ struct Queue<T> {
     var peek: T? {
         return front?.value
     }
-}
 
-extension Queue {
-    
     mutating private func push(_ value: T) {
         front = Node(value: value, next: front)
         if rear == nil {
@@ -59,9 +56,7 @@ extension Queue {
 
         return value
     }
-}
 
-extension Queue {
     func printQueue() {
         var current = front
         var result: [T] = []
