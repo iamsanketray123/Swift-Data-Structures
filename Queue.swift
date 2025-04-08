@@ -1,14 +1,14 @@
-class Node<T> {
-    var value: T
-    var next: Node?
-    
-    init(value: T, next: Node? = nil) {
-        self.value = value
-        self.next = next
-    }
-}
-
 struct Queue<T> {
+
+    class Node<T> {
+        var value: T
+        var next: Node?
+        
+        init(value: T, next: Node? = nil) {
+            self.value = value
+            self.next = next
+        }
+    }
     
     private var front: Node<T>?
     private var rear: Node<T>?
