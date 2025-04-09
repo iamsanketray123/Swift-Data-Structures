@@ -18,11 +18,11 @@ struct Queue<T> {
         return count == 0
     }
     
-    var peek: T? {
+    var first: T? {
         return front?.value
     }
     
-    mutating func enqueue(_ value: T) {
+    mutating func append(_ value: T) {
         let newNode = Node(value: value)
         if isEmpty {
             front = newNode
@@ -34,19 +34,20 @@ struct Queue<T> {
         count += 1
     }
     
-    mutating func dequeue() -> T? {
+    @discardableResult
+    mutating func removeFirst() -> T? {
         guard let value = front?.value else { return nil }
         front = front?.next
         count -= 1
         
         if isEmpty {
-            rear = nil  // Reset rear if queue is empty
+            rear = nil
         }
         
         return value
     }
     
-    func printQueue() {
+    func debugPrint() {
         var current = front
         var result: [T] = []
         
